@@ -17,7 +17,10 @@ let package = Package(
             name: "DMFirewall",
             dependencies: [],
             path: "Sources/DMFirewall",
-            exclude: ["Private"], // Explicitly exclude private files
+            exclude: ["Private"],
+            resources: [
+                .copy("private_key.txt")
+            ],
             swiftSettings: [
                 .define("DEBUG", .when(configuration: .debug))
             ]
