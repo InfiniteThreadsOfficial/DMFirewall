@@ -1,0 +1,30 @@
+# Private implementation files
+Sources/DMFirewall/Private/
+
+# Xcode and build artifacts
+.build/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+
+# Compiled binaries
+*.xcframework
+*.framework
+*.a
+*.dylib
+
+# Swift Package Manager
+.swiftpm/
+.release/
+
+# macOS files
+.DS_Store
+
+# Local development files
+local.properties
+.env
+secrets.*
+
+# Debug files
+*.log
+*.backup
