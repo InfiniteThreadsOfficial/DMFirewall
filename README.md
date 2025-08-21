@@ -5,7 +5,7 @@ DMFirewall is a powerful Swift package designed to detect unauthorized or malici
 
 It leverages 5+ layers of detection and provides real-time response hooks to help you secure your app at runtime. DMFirewall offers plug-and-play integration for both UIKit and SwiftUI projects.
 
-⚠️ DMFirewall allows 50 free detections. A premium subscription is required after that. Contact: InfiniteThreadsOfficial@proton.me
+⚠️ DMFirewall allows 10 free detections. A premium subscription is required after that. Contact: InfiniteThreadsOfficial@proton.me
 
 
 🚀 Features
@@ -146,6 +146,18 @@ func application(
     return true
 }
 ```
+
+📦 Adding DMFirewall to Your Xcode Project
+You can integrate DMFirewall into your iOS or macOS project using Swift Package Manager (SPM), which is built into Xcode.
+✅ Steps
+Open your Xcode project
+Launch Xcode and open the project you want to add DMFirewall to.
+Go to Package Dependencies
+In the top menu, click:
+File → Add Packages…
+Enter the repository URL
+In the search field at the top right, paste this GitHub URL:
+https://github.com/InfiniteThreadsOfficial/DMFirewall.git
 
 💰 Licensing & Purchase Info
 🔓 Free Tier: First 50 detections.
