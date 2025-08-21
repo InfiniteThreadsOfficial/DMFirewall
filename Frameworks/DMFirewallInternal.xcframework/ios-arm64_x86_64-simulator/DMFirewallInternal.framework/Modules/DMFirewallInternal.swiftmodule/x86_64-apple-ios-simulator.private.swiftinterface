@@ -1,0 +1,185 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target x86_64-apple-ios18.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name DMFirewallInternal
+// swift-module-flags-ignorable:  -interface-compiler-version 6.1.2
+import Combine
+import CommonCrypto
+import CoreMotion
+import CryptoKit
+import Foundation
+import GameController
+import Security
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum DMFUserType : Swift.String {
+  case unknown
+  case human
+  case notHuman
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+final public class DMFCoder {
+  public init(passphrase: Swift.String, resourceFileName: Swift.String = "private_key", resourceFileExtension: Swift.String = "txt")
+  final public func loadPrivateKey(fromFile fileName: Swift.String, fileExtension: Swift.String) throws -> Swift.String
+  final public func downloadEncryptedString(from url: Foundation.URL, completion: @escaping (Swift.Result<Swift.String, any Swift.Error>) -> Swift.Void)
+  final public func decrypt(_ encryptedString: Swift.String, privateKeyBase64: Swift.String) -> Swift.String?
+  final public func decryptPrivateKey(_ encryptedPrivateKeyBase64: Swift.String, passphrase: Swift.String? = nil) -> Swift.String?
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct DMFTextField : SwiftUICore.View {
+  @SwiftUICore.Binding @_projectedValueProperty($text) @_Concurrency.MainActor @preconcurrency public var text: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  @_Concurrency.MainActor @preconcurrency public var $text: SwiftUICore.Binding<Swift.String> {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public let placeholder: Swift.String
+  @_Concurrency.MainActor @preconcurrency public init(_ titleKey: SwiftUICore.LocalizedStringKey, text: SwiftUICore.Binding<Swift.String>)
+  @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String, text: SwiftUICore.Binding<Swift.String>)
+  @_Concurrency.MainActor @preconcurrency public init(text: SwiftUICore.Binding<Swift.String>, prompt: SwiftUICore.Text? = nil, label: () -> SwiftUICore.Text)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s18DMFirewallInternal12DMFTextFieldV4bodyQrvp", 0) __
+}
+@_hasMissingDesignatedInitializers final public class DMFGyroscopeAnalyzer {
+  final public func isRealDevice(completion: @escaping (Swift.Bool) -> Swift.Void)
+  final public func startContinuousMonitoring(suspiciousHandler: @escaping (Swift.Bool) -> Swift.Void)
+  final public func stopMonitoring()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class DMFUITextField : UIKit.UITextField {
+  @_Concurrency.MainActor @preconcurrency weak public var realDelegate: (any UIKit.UITextFieldDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var delegate: (any UIKit.UITextFieldDelegate)? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func removeFromSuperview()
+  @objc deinit
+}
+extension DMFirewallInternal.DMFUITextField : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+final public class DMFKeyboardObserver {
+  public init()
+  @objc deinit
+  final public func beginObserving()
+  final public func endObserving()
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class DMFUIView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency weak public var hostingController: SwiftUI.UIHostingController<SwiftUICore.AnyView>?
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesMoved(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func willMove(toWindow newWindow: UIKit.UIWindow?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class DMFKeychainManager {
+  final public func readValue(forKey key: Swift.String) -> Swift.String?
+  final public func setValue(_ value: Swift.String, forKey key: Swift.String) -> Swift.Bool
+  final public func deleteValue(forKey key: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class DMFKeystrokeAnalyzer {
+  final public func analyzeTypingPattern(data: inout DMFirewallInternal.DMFKeystrokeData)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class DMFOfficialDeviceAnalyzer {
+  final public func isDeviceSecure(completion: @escaping (Swift.Bool) -> Swift.Void)
+  final public func detailedSecurityReport() -> [Swift.String : Swift.Bool]
+  final public func isJailbroken() -> Swift.Bool
+  final public func isOfficialDevice() -> Swift.Bool
+  final public func isBinaryTampered() -> Swift.Bool
+  final public func isRunningOnSimulator() -> Swift.Bool
+  @objc deinit
+}
+public struct DMFTouchAnalysisResult {
+  public let userType: DMFirewallInternal.DMFUserType
+  public let reasons: [Swift.String]
+}
+@_hasMissingDesignatedInitializers final public class DMFTouchSessionAnalyzer {
+  final public func analyze(session: DMFirewallInternal.DMFTouchSession) -> DMFirewallInternal.DMFTouchAnalysisResult
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Firewall {
+  public static let sharedInstance: DMFirewallInternal.Firewall
+  final public var detectionBlock: ((DMFirewallInternal.DMFUserType) -> Swift.Void)?
+  final public var isDetectionEnabled: Swift.Bool {
+    get
+  }
+  final public var threatDebugModeAsNotHuman: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+extension DMFirewallInternal.Firewall {
+  final public func addKeystrokeData(_ data: DMFirewallInternal.DMFKeystrokeData)
+  final public func addTouchSessionData(_ data: DMFirewallInternal.DMFTouchSession)
+  final public func setConfiguration(_ configuration: DMFirewallInternal.DMFConfiguration)
+}
+public struct DMFConfiguration {
+  public let isDetectionEnabled: Swift.Bool
+  public let isLoggingEnabled: Swift.Bool
+  public let threatDebugModeAsNotHuman: Swift.Bool
+  public init(isDetectionEnabled: Swift.Bool, isLoggingEnabled: Swift.Bool, threatDebugModeAsNotHuman: Swift.Bool)
+  public static var defaultConfiguration: DMFirewallInternal.DMFConfiguration {
+    get
+  }
+}
+public struct DMFKeystrokeData : Swift.Codable, Swift.Equatable {
+  public var isChecked: Swift.Bool
+  public var isPassedCheck: Swift.Bool
+  public var timestamps: [Foundation.TimeInterval]
+  public let id: Foundation.UUID
+  public init(isChecked: Swift.Bool = false, isPassedCheck: Swift.Bool = false, id: Foundation.UUID = UUID(), timestamps: [Foundation.TimeInterval])
+  public mutating func update(checkPassed: Swift.Bool)
+  public static func == (lhs: DMFirewallInternal.DMFKeystrokeData, rhs: DMFirewallInternal.DMFKeystrokeData) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DMFTouchEvent {
+  public let duration: Foundation.TimeInterval
+  public let pressure: CoreFoundation.CGFloat?
+  public let movementDistance: CoreFoundation.CGFloat
+  public let swipeAngle: CoreFoundation.CGFloat?
+  public let swipeSpeed: CoreFoundation.CGFloat?
+}
+final public class DMFTouchSession : Foundation.ObservableObject {
+  final public var events: [DMFirewallInternal.DMFTouchEvent]
+  final public var intervalsBetweenTouches: [Foundation.TimeInterval]
+  final public var movementPaths: [[CoreFoundation.CGPoint]]
+  public init(events: [DMFirewallInternal.DMFTouchEvent] = [], intervalsBetweenTouches: [Foundation.TimeInterval] = [], movementPaths: [[CoreFoundation.CGPoint]] = [])
+  final public var averageInterval: Foundation.TimeInterval {
+    get
+  }
+  final public var intervalVariance: Foundation.TimeInterval {
+    get
+  }
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension DMFirewallInternal.DMFUserType : Swift.Equatable {}
+extension DMFirewallInternal.DMFUserType : Swift.Hashable {}
+extension DMFirewallInternal.DMFUserType : Swift.RawRepresentable {}
+extension DMFirewallInternal.DMFTextField : Swift.Sendable {}
