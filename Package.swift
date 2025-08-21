@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "DMFirewall",
-    platforms: [.iOS("15.6")],
+    platforms: [.iOS(.v15)],
     products: [
         .library(
             name: "DMFirewall",
@@ -13,11 +13,14 @@ let package = Package(
         ),
     ],
     targets: [
+        .binaryTarget(
+            name: "DMFirewallInternal",
+            path: "Frameworks/DMFirewallInternal.xcframework"
+        ),
         .target(
             name: "DMFirewall",
-            dependencies: [],
+            dependencies: ["DMFirewallInternal"], // Add this dependency
             path: "Sources/DMFirewall",
-            exclude: ["Private"],
             resources: [
                 .copy("private_key.txt")
             ],
