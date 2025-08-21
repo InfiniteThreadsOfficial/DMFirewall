@@ -6,7 +6,7 @@ import SwiftUI
 
 public class DMFirewall {
     
-    public var sharedInstance = DMFirewallInternal.Firewall.sharedInstance
+    public var sharedInstance = DMFirewall()
     public var detectionBlock: ((DMFirewallUserType) -> Void)?
     
     private init() {
