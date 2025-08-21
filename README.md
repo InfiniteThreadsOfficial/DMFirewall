@@ -45,7 +45,7 @@ DMFirewall can detect:
 
 /// DMFirewall configuration object
 ```
-struct DMFConfiguration {
+struct DMFirewallConfiguration {
     let isDetectionEnabled: Bool         // Disable to turn off detection logic
     let isLoggingEnabled: Bool           // Enable to log detection steps
     let threatDebugModeAsNotHuman: Bool  // Treat debug mode as a threat if true
@@ -75,7 +75,7 @@ class DMFirewall {
 👤 DMFUserType Enum
 
 ```
-public enum DMFUserType: String {
+public enum DMFirewallUserType: String {
     case unknown   // Detection could not determine status (super rare)
     case human     // Safe, regular user
     case notHuman  // Threat detected (simulator, emulator, jailbreak, etc.)
@@ -84,7 +84,7 @@ public enum DMFUserType: String {
 
 🧩 Custom Views
 
-SwiftUI DMFTextField
+SwiftUI DMFirewallTextField
 
 ```
 /// A secure drop-in replacement for SwiftUI's TextField
@@ -101,12 +101,12 @@ UIKit DMFUITextField
 
 /// A secure drop-in replacement for UIKit's UITextField
 ```
-struct DMFUITextField: UIView {
+struct DMFirewallUITextField: UIView {
     ...
 }
 ```
 
-UIKit DMFUIView
+UIKit DMFirewallUIView
 
 /// Drop-in replacement for any UIView (button, label, customView etc.)
 ```
@@ -136,10 +136,9 @@ func application(
         isLoggingEnabled: false,
         threatDebugModeAsNotHuman: false
     )
+    let firewall = DMFirewall(configuration: config)
 
-    DMFirewall.sharedInstance.setConfiguration(config)
-
-    DMFirewall.sharedInstance.detectionBlock = { type in
+    firewall.detectionBlock = { type in
         print("DMFirewall: \(type.rawValue) detected")
     }
 
