@@ -160,9 +160,9 @@ In the search field at the top right, paste this GitHub URL:
 https://github.com/InfiniteThreadsOfficial/DMFirewall.git
 
 💰 Licensing & Purchase Info
-🔓 Free Tier: First 50 detections.
+🔓 Free Tier: First 10 detections.
 
-🔒 Premium Required: After 50 detections, subscription is needed.
+🔒 Premium Required: After 10 detections, subscription is needed.
 
 📬 Contact: InfiniteThreadsOfficial@proton.me for pricing and access.
 
