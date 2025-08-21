@@ -6,10 +6,13 @@ import SwiftUI
 
 public class DMFirewall {
     
-    public static var sharedInstance = DMFirewall()
     public var detectionBlock: ((DMFirewallUserType) -> Void)?
     
-    private init() {
+    public init(configuration: DMFirewallConfiguration? = nil) {
+        if let configuration = configuration {
+            setConfiguration(configuration)
+        }
+        
         DMFirewallInternal.Firewall.sharedInstance.detectionBlock = { type in
             switch type {
             case .human:
@@ -24,7 +27,7 @@ public class DMFirewall {
         }
     }
     
-    func setConfiguration(_ configuration: DMFirewallConfiguration) {
+    private func setConfiguration(_ configuration: DMFirewallConfiguration) {
         let config = DMFConfiguration.init(isDetectionEnabled: configuration.isDetectionEnabled, isLoggingEnabled: configuration.isLoggingEnabled, threatDebugModeAsNotHuman: configuration.threatDebugModeAsNotHuman)
         
         DMFirewallInternal.Firewall.sharedInstance.setConfiguration(config)
