@@ -1,54 +1,54 @@
-🛡️ DMFirewall – iOS Threat Detection Swift Package
+# 🛡️ DMFirewall – iOS Anti-Fraud & Device Integrity Framework
+
+DMFirewall is a Swift package focused on anti-fraud protection and device integrity validation for iOS applications.
+
+It helps identify non-standard runtime environments such as simulators, jailbroken devices, emulators, automated environments, and modified device states commonly associated with abuse, fake traffic, testing automation, or suspicious activity.
+
+DMFirewall is designed for easy integration into both UIKit and SwiftUI projects with a lightweight and modular architecture.
 
 
-DMFirewall is a powerful Swift package designed to detect unauthorized or malicious environments such as simulators, emulators, jailbroken devices, and other non-official or malformed devices often used by hackers to exploit iOS applications.
+---
 
-It leverages 5+ layers of detection and provides real-time response hooks to help you secure your app at runtime. DMFirewall offers plug-and-play integration for both UIKit and SwiftUI projects.
+# 🚀 Features
 
-⚠️ DMFirewall allows 10 free detections. A premium subscription is required after that. Contact: InfiniteThreadsOfficial@proton.me
+- Detect simulators, emulators, jailbroken or modified devices
+- Multi-layer runtime environment analysis
+- SwiftUI & UIKit compatibility
+- Configurable logging and debug behavior
+- Optional secure UI components for additional interaction validation
+- Lightweight and modular architecture
 
-
-🚀 Features
-
-
- • Detect simulators, emulators, jailbroken or malformed devices
-
- • Five levels of detection for maximum protection
-
- • SwiftUI & UIKit compatibility
-
- • Configurable behavior for debugging and logging
-
- • Optional custom views to catch threats through user input
-
- • Easy-to-use public API
+---
 
 
-🧠 Overview
+# 🧠 Overview
+
+DMFirewall can help identify:
+
+- ✅ Standard device environments
+- ❌ Simulators
+- ❌ Jailbroken devices
+- ❌ Emulators or modified environments
+- ❌ Automated/debug runtime environments (optional)
 
 
-DMFirewall can detect:
+The framework is intended for:
+- anti-fraud systems
+- abuse prevention
+- analytics validation
+- device integrity checks
+- runtime environment awareness
 
- • ✅ Real users on real devices
-
- • ❌ Simulators
-
- • ❌ Jailbroken devices
-
- • ❌ Emulators or modified devices
-
- • ❌ Debug environments (optionally)
- 
+DMFirewall does not collect personal user data and performs all checks locally on-device.
 
 ⚙️ Configuration
 
-
 /// DMFirewall configuration object
-```
+```isDebugEnvironmentSuspicious
 struct DMFirewallConfiguration {
     let isDetectionEnabled: Bool         // Disable to turn off detection logic
     let isLoggingEnabled: Bool           // Enable to log detection steps
-    let threatDebugModeAsNotHuman: Bool  // Treat debug mode as a threat if true
+    let isDebugEnvironmentSuspicious: Bool  // Treat debug mode as a threat if true
 }
 ```
 
@@ -59,26 +59,26 @@ class DMFirewall {
     static let sharedInstance = DMFirewall()
 
     /// Called when detection finishes. May be triggered multiple times.
-    public var detectionBlock: ((DMFUserType) -> Void)?
+    public var detectionBlock: ((DMFEnvironmentType) -> Void)?
 
     /// Indicates detection logic enabled
     public var isDetectionEnabled: Bool
 
-    /// Indicates is treating debug builds as notHuman or not
-    public var threatDebugModeAsNotHuman: Bool
+    /// Indicates is treating debug builds as suspicious or not
+    public var isDebugEnvironmentSuspicious: Bool
 
     /// Apply configuration at app launch
     func setConfiguration(_ configuration: DMFConfiguration)
 }
 ```
 
-👤 DMFUserType Enum
+👤 DMFEnvironmentType Enum
 
 ```
-public enum DMFirewallUserType: String {
-    case unknown   // Detection could not determine status (super rare)
-    case human     // Safe, regular user
-    case notHuman  // Threat detected (simulator, emulator, jailbreak, etc.)
+public enum DMFEnvironmentType: String {
+    case trusted
+    case suspicious
+    case unknown
 }
 ```
 
@@ -92,7 +92,7 @@ struct DMFTextField: View {
     ...
 }
 ```
- • Use in login or sensitive screens to better trace threat sources.
+ • Useful for authentication and other sensitive user flows.
 
  • Supports all TextField initializers.
 
@@ -101,7 +101,7 @@ UIKit DMFUITextField
 
 /// A secure drop-in replacement for UIKit's UITextField
 ```
-struct DMFirewallUITextField: UIView {
+class DMFirewallUITextField: UITextField {
     ...
 }
 ```
@@ -134,7 +134,7 @@ func application(
     let config = DMFConfiguration(
         isDetectionEnabled: true,
         isLoggingEnabled: false,
-        threatDebugModeAsNotHuman: false
+        isDebugEnvironmentSuspicious: false
     )
     let firewall = DMFirewall(configuration: config)
 
@@ -144,26 +144,52 @@ func application(
 
     return true
 }
+
+## 🏗️ Architecture
+
+DMFirewall uses a modular detection pipeline where independent detectors contribute signals to a unified environment assessment.
+
+Detection categories include:
+- simulator heuristics
+- jailbreak indicators
+- debugger detection
+- runtime validation
+- environment consistency checks
+
+The framework is designed to be lightweight, extensible, and configurable for different application security requirements.
 ```
 
-📦 Adding DMFirewall to Your Xcode Project
-You can integrate DMFirewall into your iOS or macOS project using Swift Package Manager (SPM), which is built into Xcode.
-✅ Steps
-Open your Xcode project
-Launch Xcode and open the project you want to add DMFirewall to.
-Go to Package Dependencies
-In the top menu, click:
-File → Add Packages…
-Enter the repository URL
-In the search field at the top right, paste this GitHub URL:
+📦 Installation (Swift Package Manager)
+
+Add DMFirewall to your project using Swift Package Manager.
+
+Repository URL:
+
 https://github.com/InfiniteThreadsOfficial/DMFirewall.git
 
-💰 Licensing & Purchase Info
-🔓 Free Tier: First 10 detections.
+In Xcode:
 
-🔒 Premium Required: After 10 detections, subscription is needed.
+File → Add Packages…
 
-📬 Contact: InfiniteThreadsOfficial@proton.me for pricing and access.
+Paste the repository URL and add the package to your target.
+
+🎯 Use Cases
+
+DMFirewall may be useful for:
+
+subscription-based applications
+anti-abuse systems
+analytics validation
+fraud prevention
+runtime integrity monitoring
+internal enterprise applications
+apps with sensitive business logic
+
+📄 Licensing
+
+DMFirewall is available under a commercial license.
+
+For licensing or integration inquiries: epremyanartak@gmail.com
 
 
 
