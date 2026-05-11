@@ -178,11 +178,17 @@ Paste the repository URL and add the package to your target.
 DMFirewall may be useful for:
 
 subscription-based applications
+
 anti-abuse systems
+
 analytics validation
+
 fraud prevention
+
 runtime integrity monitoring
+
 internal enterprise applications
+
 apps with sensitive business logic
 
 📄 Licensing
